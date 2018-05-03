@@ -60,6 +60,7 @@
 .. .. bibliography:: local.bib lsstbib/books.bib lsstbib/lsst.bib lsstbib/lsst-dm.bib lsstbib/refs.bib lsstbib/refs_ads.bib
 ..    :encoding: latex+latin
 ..    :style: lsst_aa
+
 =================================================================
 Investigations for Consolidating System Management and Deployment
 =================================================================
@@ -96,7 +97,7 @@ Pakrat + createrepo + web server
 Overview
 ~~~~~~~~
 
-`Pakrat <https://github.com/ryanuber/pakrat>`__ is a Python-based tool
+`Pakrat <https://github.com/ryanuber/pakrat>` is a Python-based tool
 for mirroring and versioning Yum repositories. In our
 investigation/setup we are running it with a wrapper script via CRON
 (originally this was weekly but we've moved to daily). Each time the
@@ -310,7 +311,7 @@ Daily Ops
 
    -  NOTE: If/when we start dealing more with GPG keys we will need to
       update this procedure slightly. See
-      also \ `LSST-1031 <https://jira.ncsa.illinois.edu/browse/LSST-1031>`__.
+      also \ `LSST-1031 <https://jira.ncsa.illinois.edu/browse/LSST-1031>`.
 
 Improvements - High Priority
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -374,30 +375,30 @@ Improvements - High Priority
             does not match various versions shown in 'rpm-sourcerpm'
             key:
 
-            -  `rpm:sourcerpm <http://rpmsourcerpm>`__ (hard to imagine
+            -  `rpm:sourcerpm <http://rpmsourcerpm>` (hard to imagine
                this is relevant)
 
-            -  `rpm:provides <http://rpmprovides>`__ -
-               `rpm:entry <http://rpmentry>`__ (e.g., rel=)
+            -  `rpm:provides <http://rpmprovides>` -
+               `rpm:entry <http://rpmentry>` (e.g., rel=)
 
          -  more specifically, the rpm name does NOT have a release
             segment in it
 
          -  e.g., 'elasticsearch-1.7.0.noarch.rpm' is the RPM and it
             does not have a release in it's name (e.g.,
-            \*1.7.0\ **-1**.noarch.rpm) but SOURCE metadata indicates it
+            \*1.7.0\ -1.noarch.rpm) but SOURCE metadata indicates it
             is release -1:
 
-            -  | <`rpm:sourcerpm <http://rpmsourcerpm>`__>elasticsearch-1.7.0\ **-1**.src.rpm</\ `rpm:sourcerpm <http://rpmsourcerpm>`__>
-               | <`rpm:header-range <http://rpmheader-range>`__
+            -  | <`rpm:sourcerpm <http://rpmsourcerpm>`>elasticsearch-1.7.0\ -1.src.rpm</\ `rpm:sourcerpm <http://rpmsourcerpm>`>
+               | <`rpm:header-range <http://rpmheader-range>`
                  start="880" end="19168"/>
-               | <`rpm:provides <http://rpmprovides>`__>
-               | <`rpm:entry <http://rpmentry>`__ name="elasticsearch"
-                 flags="EQ" epoch="0" ver="1.7.0"\ ** rel="1"**/>
-               | <`rpm:entry <http://rpmentry>`__
+               | <`rpm:provides <http://rpmprovides>`>
+               | <`rpm:entry <http://rpmentry>` name="elasticsearch"
+                 flags="EQ" epoch="0" ver="1.7.0"\ rel="1"/>
+               | <`rpm:entry <http://rpmentry>`
                  name="config(elasticsearch)" flags="EQ" epoch="0"
-                 ver="1.7.0" \ **rel="1"**/>
-               | </`rpm:provides <http://rpmprovides>`__>
+                 ver="1.7.0" \ rel="1"/>
+               | </`rpm:provides <http://rpmprovides>`>
 
          -  Pakrat downloads the RPMs but does not include them in its
             local metadata (e.g., the only elasticsearch RPM that
@@ -526,7 +527,7 @@ Katello
 Overview
 ~~~~~~~~
 
-`Katello <https://theforeman.org/plugins/katello/>`__ is a plug-in for
+`Katello <https://theforeman.org/plugins/katello/>` is a plug-in for
 Foreman that is used to manage content, specifically local Yum and
 Puppet repositories. Katello is an integrated control interface and UI
 for Pulp and also Candlepin (RH subscription management). These products
@@ -565,7 +566,7 @@ Reasons we have elected not to investigate Katello further at this time:
    -  You must install Katello before installing Foreman, then run the
       foreman-installer with a special flag in order to install Foreman
       for use with Katello
-      (`link <https://theforeman.org/plugins/katello/nightly/installation/index.html>`__).
+      (`link <https://theforeman.org/plugins/katello/nightly/installation/index.html>`).
 
    -  Creates the need to consult both Katello's documentation and
       Foreman's documentation for some considerations.
@@ -606,7 +607,7 @@ Other Considerations
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 If we ever decide that Pakrat seems lacking in some area we should
-consider \ `Pulp <http://docs.pulpproject.org/>`__ (which is used by
+consider \ `Pulp <http://docs.pulpproject.org/>` (which is used by
 Katello) and also survey the landscape to see if anything else is
 available besides Katello.
 
@@ -684,7 +685,7 @@ Improvements - High Priority (these are needed whether we use Pakrat or Katello)
 
       -  GPG keys are often installed by the RPMs that also install the
          .repo files, no
-         (e.g., `ZFS <https://github.com/zfsonlinux/zfs/wiki/RHEL-%26-CentOS>`__)?
+         (e.g., `ZFS <https://github.com/zfsonlinux/zfs/wiki/RHEL-%26-CentOS>`)?
 
       -  files are placed in /etc/pki/rpm-gpg (could be hosted
          in/installed by Puppet) and then installed using a command like
@@ -744,54 +745,54 @@ Investigation on LSST Test Cluster
 Foreman is being installed on lsst-test-adm01. More info:
 
 -  `Foreman Feature Matrix and
-   Evaluation <file:////display/LSST/Foreman+Feature+Matrix+and+Evaluation>`__
+   Evaluation <file:////display/LSST/Foreman+Feature+Matrix+and+Evaluation>`
 
 -  `Foreman on test
-   cluster <file:////display/LSST/Foreman+on+test+cluster>`__
+   cluster <file:////display/LSST/Foreman+on+test+cluster>`
 
 Resources
 
-project website: `theforeman.org <https://theforeman.org/>`__
+project website: `theforeman.org <https://theforeman.org/>`
 
 slideshare: `Host Orchestration with Foreman, Puppet and
-Gitlab <https://www.slideshare.net/tullis/linux-host-orchestration-with-foreman-with-puppet-and-gitlab>`__
+Gitlab <https://www.slideshare.net/tullis/linux-host-orchestration-with-foreman-with-puppet-and-gitlab>`
 
 Foreman Feature Matrix and Evaluation
 -------------------------------------
 
--  `Overview <#ForemanFeatureMatrixandEvaluation-Overv>`__
+-  `Overview <#ForemanFeatureMatrixandEvaluation-Overv>`
 
--  `Feature Matrix <#ForemanFeatureMatrixandEvaluation-Featu>`__
+-  `Feature Matrix <#ForemanFeatureMatrixandEvaluation-Featu>`
 
-   -  `Deployment <#ForemanFeatureMatrixandEvaluation-Deplo>`__
+   -  `Deployment <#ForemanFeatureMatrixandEvaluation-Deplo>`
 
    -  `BMC/firmware
-      management <#ForemanFeatureMatrixandEvaluation-BMC/f>`__
+      management <#ForemanFeatureMatrixandEvaluation-BMC/f>`
 
    -  `Integration w/
-      Puppet <#ForemanFeatureMatrixandEvaluation-Integ>`__
+      Puppet <#ForemanFeatureMatrixandEvaluation-Integ>`
 
    -  `Yum repo
-      hosting/management <#ForemanFeatureMatrixandEvaluation-Yumre>`__
+      hosting/management <#ForemanFeatureMatrixandEvaluation-Yumre>`
 
    -  `Distributed architecture and
-      scalability <#ForemanFeatureMatrixandEvaluation-Distr>`__
+      scalability <#ForemanFeatureMatrixandEvaluation-Distr>`
 
-   -  `Reliability <#ForemanFeatureMatrixandEvaluation-Relia>`__
+   -  `Reliability <#ForemanFeatureMatrixandEvaluation-Relia>`
 
    -  `Interface / workflow / ease of
-      use <#ForemanFeatureMatrixandEvaluation-Inter>`__
+      use <#ForemanFeatureMatrixandEvaluation-Inter>`
 
    -  `Documentation and
-      support <#ForemanFeatureMatrixandEvaluation-Docum>`__
+      support <#ForemanFeatureMatrixandEvaluation-Docum>`
 
--  `Summary Evaluation <#ForemanFeatureMatrixandEvaluation-Summa>`__
+-  `Summary Evaluation <#ForemanFeatureMatrixandEvaluation-Summa>`
 
 -  `Addendum 1: Possible end
-   states <#ForemanFeatureMatrixandEvaluation-Adden>`__
+   states <#ForemanFeatureMatrixandEvaluation-Adden>`
 
 -  `Addendum 2: Other considerations for making a
-   decision <#ForemanFeatureMatrixandEvaluation-Adden>`__
+   decision <#ForemanFeatureMatrixandEvaluation-Adden>`
 
 Overview
 --------
@@ -872,32 +873,32 @@ that it is not worth the time
 |    machines     |                 | (apparently)    | -  anything to  |
 |    (e.g., AD),  |                 | Windows.        |    investigate/ |
 |    likely VMs   |                 |                 |    test?        |
-|                 |                 | -  anything to  |    not now      |
-|                 |                 |    investigate/ |                 |
-|                 |                 | test?           |                 |
-|                 |                 |    not now      |                 |
+|                 |                 | - anything to   |    not now      |
+|                 |                 |   investigate / |                 |
+|                 |                 |   test? not now |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Deploys ESXi on | 1               | Yes, appears to | Yes, appears to |
 | bare metal      |                 | install ESXi on | install ESXi on |
-|                 |                 | bare metal (    | bare metal (    |
-| -  should be    |                 | `xCAT           | `Foreman        |
-|    infrequent   |                 | wiki <https://s | wiki <https://p |
-|    and only     |                 | ourceforge.net/ | rojects.thefore |
-|    involve a    |                 | p/xcat/wiki/XCA | man.org/project |
-|    relatively   |                 | T_Virtualizatio | s/foreman/wiki/ |
-|    small number |                 | n_with_VMWare/> | VMware_ESXi>`__ |
-|    of machines  |                 | `__)            | )               |
+|                 |                 | bare metal      | bare metal      |
+| -  should be    |                 | (xCAT wiki)     | (Foreman wiki)  |
+|    infrequent   |                 |                 |                 |
+|    and only     |                 |                 |                 |
+|    involve a    |                 |                 |                 |
+|    relatively   |                 |                 |                 |
+|    small number |                 |                 |                 |
+|    of machines  |                 |                 |                 |
 |                 |                 |                 |                 |
 |                 |                 | -  investigate  | -  investigate  |
 |                 |                 |    further/test |    further/test |
-|                 |                 | ?               | ?               |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Local DNS for   | **???**         | Yes, although   | Yes - tested    |
 | location-specif |                 | we haven't been |                 |
 | ic              |                 | using           |                 |
 | mgmt and svc    |                 |                 |                 |
 | networks        |                 | -  investigate/ |                 |
-|                 |                 | test?           |                 |
+|                 |                 |     test?       |                 |
 | -  do we need   |                 |                 |                 |
 |    this? or     |                 |                 |                 |
 |    could we /   |                 |                 |                 |
@@ -905,13 +906,14 @@ that it is not worth the time
 |    on external  |                 |                 |                 |
 |    DNS +        |                 |                 |                 |
 |    /etc/hosts?  |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Manage DNS      | 1               | Probably not.   | Possibly...but  |
 | hosted on       |                 |                 | needs           |
 | external system |                 | -  investigate? | investigation   |
 | (e.g., make     |                 |                 |                 |
 | local DNS       |                 | -  test?        | -  investigate/ |
-| authoritative   |                 |                 | test?           |
+| authoritative   |                 |                 |    test?        |
 | or have mgmt    |                 |                 |                 |
 | system interact |                 |                 |                 |
 | with external   |                 |                 |                 |
@@ -924,6 +926,7 @@ that it is not worth the time
 |    nice for     |                 |                 |                 |
 |    internal     |                 |                 |                 |
 |    networks     |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Bare-metal      | 3               | Yes - tested    | Yes - tested    |
 | deployment      |                 |                 |                 |
@@ -939,15 +942,16 @@ that it is not worth the time
 |    or was       |                 |                 | -  investigate  |
 |    provisioned  |                 | -  investigate  |    PXE booting  |
 |    using xCAT   |                 |    PXE booting  |    pre-provisio |
-|    or Foreman,  |                 |    pre-provisio | ned             |
-|    now we need  |                 | ned             |    VMs          |
-|    to install   |                 |    VMs          |                 |
+|    or Foreman,  |                 |    pre-provisio |    provisioned  |
+|    now we need  |                 |    ned VMs      |    VMs          |
+|    to install   |                 |                 |                 |
 |    an OS on it  |                 |                 | -  investigate  |
 |    (e.g., via   |                 | -  investigate  |    other        |
 |    PXE +        |                 |    other        |    options?     |
 |    kickstart as |                 |    options?     |                 |
 |    w/ bare      |                 |                 |                 |
 |    metal)       |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Provisioning of | 1               | Yes, but not    | Yes, but not    |
 | VMs within      |                 | yet tested      | yet tested      |
@@ -957,50 +961,49 @@ that it is not worth the time
 |                 |                 | /wiki/XCAT_Virt | /1.15/#5.2.9VMw |
 |                 |                 | ualization_with | areNotes        |
 |                 |                 | _VMWare/        |                 |
-|                 |                 |                 | -  investigate  |
-|                 |                 | -  investigate  |    integration  |
-|                 |                 |    integration  |    with VMware  |
-|                 |                 |    with VMware  |    to provision |
-|                 |                 |    to provision |    VMs          |
+|                 |                 |                 | - investigate   |
+|                 |                 | -  investigate  |   integration   |
+|                 |                 |    integration  |   with VMware   |
+|                 |                 |    with VMware  |   to provisio n |
+|                 |                 |    to provision |   VMs           |
 |                 |                 |    VMs          |                 |
-|                 |                 |                 |    -  has       |
-|                 |                 |    -  has       |       access to |
-|                 |                 |       access to |       what it   |
-|                 |                 |       what it   |       needs and |
-|                 |                 |       needs and |       only what |
-|                 |                 |       only what |       it needs? |
+|                 |                 |                 |   - has         |
+|                 |                 |    -  has       |     access to   |
+|                 |                 |       access to |     what it     |
+|                 |                 |       what it   |     needs and   |
+|                 |                 |       needs and |     only what   |
+|                 |                 |       only what |     it needs?   |
 |                 |                 |       it needs? |                 |
-|                 |                 |                 |    -  other     |
-|                 |                 |    -  other     |       security  |
-|                 |                 |       security  |       concerns? |
+|                 |                 |                 |   - other       |
+|                 |                 |    -  other     |     security    |
+|                 |                 |       security  |     concerns?   |
 |                 |                 |       concerns? |                 |
-|                 |                 |                 |    -  remote    |
-|                 |                 |                 |       (other    |
-|                 |                 |                 |       sites/dat |
-|                 |                 |                 | acenters)       |
-|                 |                 |                 |       provision |
-|                 |                 |                 | ing             |
-|                 |                 |                 |       via       |
-|                 |                 |                 |       VMware?   |
-|                 |                 |                 |       i.e., how |
-|                 |                 |                 |       does the  |
-|                 |                 |                 |       Foreman   |
-|                 |                 |                 |       master    |
-|                 |                 |                 |       provision |
-|                 |                 |                 |       resources |
-|                 |                 |                 |       in a      |
-|                 |                 |                 |       remote    |
-|                 |                 |                 |       location? |
-|                 |                 |                 |       does it   |
-|                 |                 |                 |       talk to a |
-|                 |                 |                 |       local     |
-|                 |                 |                 |       vSphere   |
-|                 |                 |                 |       which     |
-|                 |                 |                 |       then      |
-|                 |                 |                 |       handles   |
-|                 |                 |                 |       the       |
-|                 |                 |                 |       provision |
-|                 |                 |                 | ing?            |
+|                 |                 |                 |   - remote      |
+|                 |                 |                 |     (other      |
+|                 |                 |                 |     sites/      |
+|                 |                 |                 |     datacenters)|
+|                 |                 |                 |     provision   |
+|                 |                 |                 |     via         |
+|                 |                 |                 |     VMware?     |
+|                 |                 |                 |     i.e., how   |
+|                 |                 |                 |     does the    |
+|                 |                 |                 |     Foreman     |
+|                 |                 |                 |     master      |
+|                 |                 |                 |     provision   |
+|                 |                 |                 |     resources   |
+|                 |                 |                 |     in a        |
+|                 |                 |                 |     remote      |
+|                 |                 |                 |     location?   |
+|                 |                 |                 |     does it     |
+|                 |                 |                 |     talk to a   |
+|                 |                 |                 |     local       |
+|                 |                 |                 |     vSphere     |
+|                 |                 |                 |     which       |
+|                 |                 |                 |     then        |
+|                 |                 |                 |     handles     |
+|                 |                 |                 |     the         |
+|                 |                 |                 |     provision   |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Provisioning of | **???**         | Not really; the | Some support    |
 | cloud resources |                 | xCAT            | (manual         |
@@ -1008,13 +1011,9 @@ that it is not worth the time
 | GCE, etc.)      |                 | recommends      | with            |
 |                 |                 | using Chef to   | image-based     |
 |                 |                 | interact with   | deployment of   |
-|                 |                 | these           | the OS):        |
-|                 |                 | resources:      |                 |
-|                 |                 |                 | -  https://thef |
-|                 |                 | -  https://sour | oreman.org/manu |
-|                 |                 | ceforge.net/p/x | als/1.16/index. |
-|                 |                 | cat/wiki/Adding | html#5.2Compute |
-|                 |                 | _Chef_in_xCAT_C | Resources       |
+|                 |                 | these           | the OS).        |
+|                 |                 | resources.      |                 |
+|                 |                 |                 |                 |
 |                 |                 | luster/         |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Diskless        | **???**         | Yes, using in   | Unsure...it     |
@@ -1024,34 +1023,31 @@ that it is not worth the time
 | -  do we need   |                 |                 | desired boot    |
 |    this?        |                 |                 | image rather    |
 |                 |                 |                 | than an         |
-|    -  `2017-12- |                 |                 | Anaconda-based  |
-| 18              |                 |                 | install image)  |
-|       Meeting   |                 |                 | but there       |
-|       Notes:    |                 |                 | doesn't seem to |
-|       Batch     |                 |                 | be any specific |
-|       Productio |                 |                 | how-tos or      |
-| n               |                 |                 | tutorials on    |
-|       Services  |                 |                 | this and no     |
-| <file:////displ |                 |                 | sign that       |
-| ay/LSST/2017-12 |                 |                 | anyone asking   |
-| -18+Meeting+Not |                 |                 | has ever gotten |
-| es%253A+Batch+P |                 |                 | detailed help   |
-| roduction+Servi |                 |                 | with it         |
-| ces>`__         |                 |                 |                 |
+|    - 2017-12-18 |                 |                 | Anaconda-based  |
+|      Meeting    |                 |                 | install image)  |
+|      Notes:     |                 |                 | but there       |
+|      Batch      |                 |                 | doesn't seem to |
+|      Production |                 |                 | be any specific |
+|      Services   |                 |                 | how-tos or      |
+|                 |                 |                 | tutorials on    |
+|                 |                 |                 | this and no     |
+|                 |                 |                 | sign that       |
+|                 |                 |                 | anyone asking   |
+|                 |                 |                 | has ever gotten |
+|                 |                 |                 | detailed help   |
+|                 |                 |                 | with it         |
+|                 |                 |                 |                 |
 |                 |                 |                 | -  investigate/ |
-|       -  "LDM-1 |                 |                 | test?           |
-| 44:             |                 |                 |                 |
-|          need   |                 |                 | -  we could     |
-|          input  |                 |                 |    build an     |
-|          into   |                 |                 |    image with   |
-|          what   |                 |                 |    xCAT and     |
-|          statel |                 |                 |    boot nodes   |
-| ess             |                 |                 |    from it with |
-|          nodes, |                 |                 |    Foreman      |
-|          etc.,  |                 |                 |                 |
-|          will   |                 |                 |                 |
-|          look   |                 |                 |                 |
-|          like"  |                 |                 |                 |
+|    - LDM-144:   |                 |                 |    test?        |
+|                 |                 |                 |                 |
+|      need input |                 |                 | -  we could     |
+|      into what  |                 |                 |    build an     |
+|      stateless  |                 |                 |    image with   |
+|      nodes, etc |                 |                 |    xCAT and     |
+|      will look  |                 |                 |    boot nodes   |
+|      like       |                 |                 |    from it with |
+|                 |                 |                 |    Foreman      |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Node discovery  | 2               | Yes, but        | Offers this     |
 | (w/o            |                 | haven't pursued | feature         |
@@ -1059,13 +1055,13 @@ that it is not worth the time
 | with switches)  |                 | it to work      | Plugin <https:/ |
 |                 |                 |                 | /theforeman.org |
 | -  we don't     |                 | -  investigate/ | /plugins/forema |
-|    install      |                 | test            | n_discovery/9.1 |
-|    nodes all    |                 |    further?     | /index.html>`__ |
+|    install      |                 |    test         | n_discovery/9.1 |
+|    nodes all    |                 |    further?     | /index.html>`   |
 |    that often;  |                 |                 | ),              |
 |    it is        |                 |                 | but not tested  |
 |    possible to  |                 |                 |                 |
-|    discover     |                 |                 | -  investigate/ |
-|    mgmt MACs    |                 |                 | test?           |
+|    discover     |                 |                 | - investigate/  |
+|    mgmt MACs    |                 |                 |   test?         |
 |    via PXE log  |                 |                 |                 |
 |    entries then |                 |                 |                 |
 |    configure    |                 |                 |                 |
@@ -1081,19 +1077,19 @@ that it is not worth the time
 |    how          |                 |                 |                 |
 |    efficient    |                 |                 |                 |
 |    collaboratin |                 |                 |                 |
-| g               |                 |                 |                 |
 |    w/ local     |                 |                 |                 |
 |    boots on the |                 |                 |                 |
 |    ground will  |                 |                 |                 |
 |    be for       |                 |                 |                 |
 |    deployments  |                 |                 |                 |
 |    in Chile     |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Switch-based    | 1               | Yes             | No?             |
 | discovery       |                 |                 |                 |
-| (i.e., SNMP     |                 | -  investigate/ | -  investigate/ |
-| query of        |                 | test            | test            |
-| switches)       |                 |    further?     |    further?     |
+| (i.e., SNMP     |                 | - investigate/  | - investigate/  |
+| query of        |                 |   test          |   test          |
+| switches)       |                 |   further?      |   further?      |
 |                 |                 |                 |                 |
 | -  we don't     |                 |                 |                 |
 |    install      |                 |                 |                 |
@@ -1118,7 +1114,6 @@ that it is not worth the time
 |    how          |                 |                 |                 |
 |    efficient    |                 |                 |                 |
 |    collaboratin |                 |                 |                 |
-| g               |                 |                 |                 |
 |    w/ local     |                 |                 |                 |
 |    boots on the |                 |                 |                 |
 |    ground will  |                 |                 |                 |
@@ -1128,23 +1123,18 @@ that it is not worth the time
 +-----------------+-----------------+-----------------+-----------------+
 | Configure       | 0.5             | Yes?            | No?             |
 | Ethernet switch |                 |                 |                 |
-| ports           |                 | -  `xCAT docs:  | -  investigate/ |
-|                 |                 |    switch       | confirm?        |
-| -  not even     |                 |    management < |                 |
-|    sure NetEng  |                 | https://xcat-do |                 |
-|    would allow  |                 | cs.readthedocs. |                 |
-|    us to do     |                 | io/en/2.13.8/ad |                 |
-|    this         |                 | vanced/networks |                 |
-|                 |                 | /ethernet_switc |                 |
-|                 |                 | hes/ethernet_sw |                 |
-|                 |                 | itches.html#swi |                 |
-|                 |                 | tch-management> |                 |
-|                 |                 | `__             |                 |
+| ports           |                 | - xCAT docs:    | - investigate/  |
+|                 |                 |   switch        |   confirm?      |
+| -  not even     |                 |   management    |                 |
+|    sure NetEng  |                 |                 |                 |
+|    would allow  |                 |                 |                 |
+|    us to do     |                 |                 |                 |
+|    this         |                 |                 |                 |
+|                 |                 | - investigate/  |                 |
+|                 |                 |   confirm?      |                 |
 |                 |                 |                 |                 |
-|                 |                 | -  investigate/ |                 |
-|                 |                 | confirm?        |                 |
 +-----------------+-----------------+-----------------+-----------------+
-| BMC/firmware    | This is a       | Need to         |                 |
+| BMC/firmware    |                 | Need to         |                 |
 | management      |                 | strong focus of | investigate     |
 |                 |                 | xCAT.           | what the BMC    |
 |                 |                 |                 | Smart Proxy     |
@@ -1159,6 +1149,7 @@ that it is not worth the time
 |                 |                 |                 | n               |
 |                 |                 |                 | of xCAT) with   |
 |                 |                 |                 | Foreman.        |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Remote power    | 3               | Yes - rpower    | -  investigate  |
 |                 |                 |                 |    SmartProxy   |
@@ -1166,6 +1157,7 @@ that it is not worth the time
 |                 |                 |                 |                 |
 |                 |                 |                 | -  investigate  |
 |                 |                 |                 |    Confluent    |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Remote console  | 3               | Yes - xCAT's    | -  investigate  |
 | and console     |                 | rcons and       |    SmartProxy   |
@@ -1176,6 +1168,7 @@ that it is not worth the time
 |                 |                 |                 |                 |
 |                 |                 |                 | -  investigate  |
 |                 |                 |                 |    Confluent    |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Manage BIOS     | 3               | Yes - Lenovo:   | -  investigate  |
 | settings        |                 | xCAT's pasu,    |    SmartProxy   |
@@ -1188,6 +1181,7 @@ that it is not worth the time
 |                 |                 | racadm,         |    Confluent    |
 |                 |                 | probably with a |                 |
 |                 |                 | wrapper         |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Install         | 3               | Lenovo:         | -  investigate  |
 | firmware        |                 | supported via   |    SmartProxy   |
@@ -1203,23 +1197,20 @@ that it is not worth the time
 |    boot the     |                 |                 |    approach of  |
 |    node         |                 |                 |    xCAT's       |
 |                 |                 |                 |    Genesis boot |
-|    -  then      |                 |                 |    approach     |
-|       again,    |                 |                 |    and/or       |
-|       what is   |                 |                 |    Industry's   |
-|       the       |                 |                 |    firmware     |
-|       differenc |                 |                 |    approach     |
-| e               |                 |                 |                 |
-|       between   |                 |                 |                 |
-|       installin |                 |                 |                 |
-| g               |                 |                 |                 |
-|       from the  |                 |                 |                 |
-|       Genesis   |                 |                 |                 |
-|       kernel    |                 |                 |                 |
-|       and       |                 |                 |                 |
-|       installin |                 |                 |                 |
-| g               |                 |                 |                 |
-|       from the  |                 |                 |                 |
-|       booted OS |                 |                 |                 |
+|    - then       |                 |                 |    approach     |
+|      again,     |                 |                 |    and/or       |
+|      what is    |                 |                 |    Industry's   |
+|      the        |                 |                 |    firmware     |
+|      difference |                 |                 |    approach     |
+|      between    |                 |                 |                 |
+|      installin  |                 |                 |                 |
+|      from the   |                 |                 |                 |
+|      Genesis    |                 |                 |                 |
+|      kernel     |                 |                 |                 |
+|      and        |                 |                 |                 |
+|      installing |                 |                 |                 |
+|      from the   |                 |                 |                 |
+|      booted OS  |                 |                 |                 |
 |                 |                 |                 |                 |
 | -  could be     |                 |                 |                 |
 |    useful in    |                 |                 |                 |
@@ -1236,6 +1227,7 @@ that it is not worth the time
 |    modifying an |                 |                 |                 |
 |    install on   |                 |                 |                 |
 |    local disks  |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Integration     | 2               | Not             | High level of   |
 | w/Puppet        |                 | integrated...   | integration     |
@@ -1245,25 +1237,19 @@ that it is not worth the time
 |                 |                 |    Puppet       | -  Foreman is   |
 |                 |                 |                 |    installed    |
 |                 |                 | -  BYO ENC      |    via/alongsid |
-|                 |                 |                 | e               |
-|                 |                 | -  `Puppet      |    Puppet       |
-|                 |                 |    module for   |                 |
-|                 |                 |    xCAT <https: | -  `ENC <https: |
-|                 |                 | //github.com/oe | //theforeman.or |
-|                 |                 | udtinsanmie/oeu | g/manuals/1.15/ |
-|                 |                 | dtinsanmie-xcat | #3.5.5Factsandt |
-|                 |                 | >`__            | heENC>`__       |
-|                 |                 |    (out-of-date |    - tested     |
-|                 |                 | )               |                 |
+|                 |                 | - Puppet        |    Puppet ENC   |
+|                 |                 |   module for    |                 |
+|                 |                 |   xCAT          | -  ENC          |
+|                 |                 |   (out-of-date) |    - tested     |
 |                 |                 |                 | -  Puppet       |
 |                 |                 | ...However, the |    logging      |
 |                 |                 | main thing      |                 |
-|                 |                 | missing right   |    -            |
+|                 |                 | missing right   |                 |
 |                 |                 | now is better   |                 |
-|                 |                 | Puppet          |       -  look   |
-|                 |                 | reporting,      |          closer |
-|                 |                 | although in     |          at     |
-|                 |                 | theory this is  |          this   |
+|                 |                 | Puppet          |    - look       |
+|                 |                 | reporting,      |      closer at  |
+|                 |                 | although in     |      thisat     |
+|                 |                 | theory this is  |                 |
 |                 |                 | already         |                 |
 |                 |                 | available in    | -  further      |
 |                 |                 | NPCF via        |    investigate  |
@@ -1271,48 +1257,43 @@ that it is not worth the time
 |                 |                 | logging and is  |    of           |
 |                 |                 | being looked at |    distributed  |
 |                 |                 | via our         |    Puppet       |
-|                 |                 | monitoring      |    infrastructu |
-|                 |                 | stack.          | re:             |
+|                 |                 | monitoring      |    infrastructur|
+|                 |                 | stack.          |                 |
 |                 |                 |                 |                 |
-|                 |                 |                 |    -  Puppet    |
-|                 |                 |                 |       Master    |
+|                 |                 |                 |    - Puppet     |
+|                 |                 |                 |      Master     |
 |                 |                 |                 |                 |
-|                 |                 |                 |    -  Puppet CA |
+|                 |                 |                 |    - Puppet CA  |
 |                 |                 |                 |                 |
-|                 |                 |                 |       -  certif |
-|                 |                 |                 | icate           |
-|                 |                 |                 |          signin |
-|                 |                 |                 | g               |
-|                 |                 |                 |          and    |
-|                 |                 |                 |          revoca |
-|                 |                 |                 | tion            |
+|                 |                 |                 |       - cert    |
+|                 |                 |                 |         signing |
+|                 |                 |                 |         and     |
+|                 |                 |                 |         revoke  |
 |                 |                 |                 |                 |
-|                 |                 |                 |    -  other     |
-|                 |                 |                 |       high      |
-|                 |                 |                 |       availabil |
-|                 |                 |                 | ity             |
-|                 |                 |                 |       considera |
-|                 |                 |                 | tions?          |
+|                 |                 |                 |    - other high |
+|                 |                 |                 |      avail.     |
+|                 |                 |                 |      considera- |
+|                 |                 |                 |      tions?     |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Yum repo        | 3               | Pakrat:         | Pakrat (or      |
 | hosting/        |                 |                 | perhaps         |
 | management      |                 | -               | Pulp/Katello)   |
 |                 |                 |                 |                 |
-|                 |                 |    -  we have a | -               |
-|                 |                 |       number of |                 |
-|                 |                 |       minor     |    -  we have a |
-|                 |                 |       issues to |       number of |
-|                 |                 |       investiga |       minor     |
-|                 |                 | te              |       issues to |
-|                 |                 |                 |       investiga |
-|                 |                 | -               | te              |
+|                 |                 |    - we have a  | -               |
+|                 |                 |      number of  |                 |
+|                 |                 |      minor      |   - we have a   |
+|                 |                 |      issues to  |     number of   |
+|                 |                 |      investigate|     minor       |
+|                 |                 |                 |     issues to   |
+|                 |                 |                 |     investigate |
 |                 |                 |                 |                 |
-|                 |                 |    -  implement |    -  implement |
-|                 |                 |       syncing   |       syncing   |
-|                 |                 |       from      |       from      |
-|                 |                 |       master to |       master to |
-|                 |                 |       remote    |       remote    |
-|                 |                 |       servers   |       servers   |
+|                 |                 |    - implement  |    - implement  |
+|                 |                 |      syncing    |      syncing    |
+|                 |                 |      from       |      from       |
+|                 |                 |      master to  |      master to  |
+|                 |                 |      remote     |      remote     |
+|                 |                 |      servers    |      servers    |
 |                 |                 |                 |                 |
 |                 |                 | -  investigate  | -  investigate  |
 |                 |                 |    Pulp?        |    Pulp?        |
@@ -1320,22 +1301,22 @@ that it is not worth the time
 |                 |                 |                 | -  investigate  |
 |                 |                 |                 |    Katello?     |
 |                 |                 |                 |                 |
-|                 |                 |                 |    -  integrate |
-|                 |                 |                 | d               |
-|                 |                 |                 |       with      |
-|                 |                 |                 |       Foreman   |
-|                 |                 |                 |       and       |
-|                 |                 |                 |       likely    |
-|                 |                 |                 |       handles   |
-|                 |                 |                 |       syncing   |
+|                 |                 |                 |    - integrated |
+|                 |                 |                 |      with       |
+|                 |                 |                 |      Foreman    |
+|                 |                 |                 |      and        |
+|                 |                 |                 |      likely     |
+|                 |                 |                 |      handles    |
+|                 |                 |                 |      syncing    |
 |                 |                 |                 |                 |
-|                 |                 |                 |    -  Jake      |
-|                 |                 |                 |       feels     |
-|                 |                 |                 |       it's not  |
-|                 |                 |                 |       worth     |
-|                 |                 |                 |       looking   |
-|                 |                 |                 |       at right  |
-|                 |                 |                 |       now       |
+|                 |                 |                 |    - Jake       |
+|                 |                 |                 |      feels      |
+|                 |                 |                 |      it's not   |
+|                 |                 |                 |      worth      |
+|                 |                 |                 |      looking    |
+|                 |                 |                 |      at right   |
+|                 |                 |                 |      now        |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Distributed     | --              | Allows for      | Allows for      |
 | architecture    |                 | distributed     | distributed     |
@@ -1348,52 +1329,52 @@ that it is not worth the time
 |                 |                 | vanced/hierarch | /1.15/#1.Forema |
 |                 |                 | y/index.html    | n1.15Manual     |
 |                 |                 |                 |                 |
-| -  Will our     |                 | -  this seems   | -  this is      |
-|    nodes all    |                 |    like a       |    front and    |
-|    have         |                 |    somewhat     |    center with  |
-|    "public"     |                 |    nonstandard  |    Foreman (it  |
-|    interfaces   |                 |    configuratio |    is described |
-|    or at least  |                 | n               |    in the very  |
-|    be able to   |                 |    (we don't    |    first part   |
-|    "NAT out" to |                 |    seem to be   |    of the       |
-|    reach remote |                 |    using at     |    Foreman      |
-|    management   |                 |    NCSA anyway) |    manual)      |
+| -  Will our     |                 | - this seems    | -  this is      |
+|    nodes all    |                 |   like a        |    front and    |
+|    have         |                 |   somewhat      |    center with  |
+|    "public"     |                 |   nonstandard   |    Foreman (it  |
+|    interfaces   |                 |   configuration |    is described |
+|    or at least  |                 |                 |    in the very  |
+|    be able to   |                 |   (we don't     |    first part   |
+|    "NAT out" to |                 |   seem to be    |    of the       |
+|    reach remote |                 |   using at      |    Foreman      |
+|    management   |                 |   NCSA anyway)  |    manual)      |
 |    resources?   |                 |                 |                 |
-|                 |                 | -  handles      | Foreman Master  |
-|                 |                 |    subnetting   | controls        |
-|                 |                 |    for          | deployments     |
-|                 |                 |    management   | (DHCP, local    |
-|                 |                 |    networks via | DNS, TFTP)      |
-|                 |                 |    `"setupforwa |                 |
-|                 |                 | rd"             | -  verify       |
-|                 |                 |    setting <htt |    usability    |
-|                 |                 | ps://xcat-docs. |    with remote  |
-|                 |                 | readthedocs.io/ |    nodes that   |
-|                 |                 | en/2.13.8/advan |    have no      |
-|                 |                 | ced/hierarchy/d |    public       |
-|                 |                 | efine_service_n |    address and  |
-|                 |                 | odes.html>`__   |    no NAT       |
+|                 |                 | - handles       | Foreman Master  |
+|                 |                 |   subnetting    | controls        |
+|                 |                 |   for           | deployments     |
+|                 |                 |   management    | (DHCP, local    |
+|                 |                 |   networks via  | DNS, TFTP)      |
+|                 |                 |   "setupforward |                 |
+|                 |                 |                 | -  verify       |
+|                 |                 |   setting"      |    usability    |
+|                 |                 |                 |    with remote  |
+|                 |                 |                 |    nodes that   |
+|                 |                 |                 |    have no      |
+|                 |                 |                 |    public       |
+|                 |                 |                 |    address and  |
+|                 |                 |                 |    no NAT       |
 |                 |                 |                 |    capability   |
-|                 |                 | -  but          |    (may be an   |
-|                 |                 |    definitely   |    artificial   |
-|                 |                 |    does NOT     |    constraint;  |
-|                 |                 |    seem set up  |    nodes should |
-|                 |                 |    for          |    probably be  |
-|                 |                 |    distribution |    able to      |
-|                 |                 |    across WAN   |    connect      |
+|                 |                 | - but           |    (may be an   |
+|                 |                 |   definitely    |    artificial   |
+|                 |                 |   does NOT      |    constraint;  |
+|                 |                 |   seem set up   |    nodes should |
+|                 |                 |   for           |    probably be  |
+|                 |                 |   distribution  |    able to      |
+|                 |                 |   across WAN    |    connect      |
 |                 |                 |                 |    outside for  |
-|                 |                 | -  in other     |    SSL CRL,     |
-|                 |                 |    words, we'd  |    etc.)        |
-|                 |                 |    need to have |                 |
-|                 |                 |    a full xCAT  |                 |
-|                 |                 |    master for   |                 |
-|                 |                 |    each         |                 |
-|                 |                 |    datacenter   |                 |
-|                 |                 |    (specificall |                 |
-|                 |                 | y               |                 |
-|                 |                 |    for each     |                 |
-|                 |                 |    management   |                 |
-|                 |                 |    network)     |                 |
+|                 |                 | - in other      |    SSL CRL,     |
+|                 |                 |   words, we'd   |    etc.)        |
+|                 |                 |   need to have  |                 |
+|                 |                 |   a full xCAT   |                 |
+|                 |                 |   master for    |                 |
+|                 |                 |   each          |                 |
+|                 |                 |   datacenter    |                 |
+|                 |                 |   (specifically |                 |
+|                 |                 |   for each      |                 |
+|                 |                 |   management    |                 |
+|                 |                 |   network)      |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Central         | 1               | No, does not    | Yes, definitely |
 | execution of    |                 | seem to support | handles         |
@@ -1403,26 +1384,26 @@ that it is not worth the time
 | updating of     |                 | infrastructure  | Foreman Master) |
 | node settings   |                 | at all)         |                 |
 | on remote       |                 |                 | -  verify       |
-| deployment      |                 | -  investigate  |    remote node  |
-| infrastructure  |                 |    custom       |    deployment   |
-| (i.e.,          |                 |    syncing /    |    across       |
-| configure       |                 |    updating of  |    sites: DNS,  |
-| deployment      |                 |    xCAT         |    DHCP, PXE,   |
-| settings on a   |                 |    configuratio |    kickstart w/ |
-| master          |                 | n               |    remote       |
+| deployment      |                 | - investigate   |    remote node  |
+| infrastructure  |                 |   custom        |    deployment   |
+| (i.e.,          |                 |   syncing /     |    across       |
+| configure       |                 |   updating of   |    sites: DNS,  |
+| deployment      |                 |   xCAT          |    DHCP, PXE,   |
+| settings on a   |                 |   configuration |    kickstart w/ |
+| master          |                 |                 |    remote       |
 | deployment      |                 |    across WAN?  |    Foreman      |
 | server at NCSA  |                 |                 |    Smart Proxy  |
-| to affect how a |                 | -  do be clear, |                 |
-| node deploys in |                 |    w/ xCAT we'd | -  investigate  |
-| Chile, handle   |                 |    need to log  |    client       |
-| things like     |                 |    into a       |    enrollment   |
-| DHCP, PXE,      |                 |    different    |    to local     |
-| kickstart,      |                 |    xCAT master  |    Puppet       |
-| etc.)           |                 |    for each     |    Master /     |
-|                 |                 |    datacenter   |    Puppet CA    |
-|                 |                 |    unless we do |    during       |
-|                 |                 |    something    |    initial      |
-|                 |                 |    custom       |    deployment   |
+| to affect how a |                 | - do be clear,  |                 |
+| node deploys in |                 |   w/ xCAT we'd  | -  investigate  |
+| Chile, handle   |                 |   need to log   |    client       |
+| things like     |                 |   into a        |    enrollment   |
+| DHCP, PXE,      |                 |   different     |    to local     |
+| kickstart,      |                 |   xCAT master   |    Puppet       |
+| etc.)           |                 |   for each      |    Master /     |
+|                 |                 |   datacenter    |    Puppet CA    |
+|                 |                 |   unless we do  |    during       |
+|                 |                 |   something     |    initial      |
+|                 |                 |   custom        |    deployment   |
 |                 |                 |                 |    (without     |
 |                 |                 |                 |    node         |
 |                 |                 |                 |    connectivity |
@@ -1432,6 +1413,7 @@ that it is not worth the time
 |                 |                 |                 |    -  local     |
 |                 |                 |                 |       Puppet    |
 |                 |                 |                 |       Master    |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Central         | 2               | No, does not    | A little        |
 | management of   |                 | seem to support | bit...?         |
@@ -1440,8 +1422,8 @@ that it is not worth the time
 | infrastructure  |                 | -  investigate  |    nice Puppet  |
 | (across WAN)    |                 |    method of    |    modules for  |
 | (i.e., how do   |                 |    syncing      |    managing     |
-| we keep remote  |                 |    content/sett |    Foreman      |
-| deployment      |                 | ings            |    Master /     |
+| we keep remote  |                 |    content/     |    Foreman      |
+| deployment      |                 |    settings     |    Master /     |
 | servers         |                 |    for          |    Foreman      |
 | up-to-date)     |                 |    deployment   |    Smart Proxy  |
 |                 |                 |    servers      |    that could   |
@@ -1449,36 +1431,34 @@ that it is not worth the time
 |    likely to at |                 |                 |    updating     |
 |    least have   |                 | -  investigate  |    server       |
 |    local        |                 |    remote       |    settings at  |
-|    DHCP/kicksta |                 |    syncing of   |    least        |
-| rt              |                 |    Puppet repos |                 |
-|    servers      |                 |                 | -  but it does  |
-|                 |                 |                 |    seem like at |
-|                 |                 |                 |    a            |
-|                 |                 |                 |    fundamental  |
-|                 |                 |                 |    level each   |
-|                 |                 |                 |    Smart Proxy  |
-|                 |                 |                 |    is installed |
-|                 |                 |                 |    and          |
-|                 |                 |                 |    configured   |
-|                 |                 |                 |    independentl |
-|                 |                 |                 | y               |
+|    DHCP/        |                 |    syncing of   |    least        |
+|    kickstart    |                 |    Puppet repos |                 |
+|    servers      |                 |                 | - but it does   |
+|                 |                 |                 |   seem like at  |
+|                 |                 |                 |   a fundamental |
+|                 |                 |                 |   level each    |
+|                 |                 |                 |   Smart Proxy   |
+|                 |                 |                 |   is installed  |
+|                 |                 |                 |   and           |
+|                 |                 |                 |   configured    |
+|                 |                 |                 |   independently |
 |                 |                 |                 |                 |
-|                 |                 |                 | -  investigate  |
-|                 |                 |                 |    method of    |
-|                 |                 |                 |    syncing      |
-|                 |                 |                 |    content      |
-|                 |                 |                 |    (e.g.,       |
-|                 |                 |                 |    images/sourc |
-|                 |                 |                 | e               |
-|                 |                 |                 |    repos) for   |
-|                 |                 |                 |    deployment   |
-|                 |                 |                 |    servers      |
-|                 |                 |                 |    across WAN   |
+|                 |                 |                 | - investigate   |
+|                 |                 |                 |   method of     |
+|                 |                 |                 |   syncing       |
+|                 |                 |                 |   content       |
+|                 |                 |                 |   (e.g.,        |
+|                 |                 |                 |   images/source |
+|                 |                 |                 |   repos) for    |
+|                 |                 |                 |   deployment    |
+|                 |                 |                 |   servers       |
+|                 |                 |                 |   across WAN    |
 |                 |                 |                 |                 |
-|                 |                 |                 | -  investigate  |
-|                 |                 |                 |    remote       |
-|                 |                 |                 |    syncing of   |
-|                 |                 |                 |    Puppet repos |
+|                 |                 |                 | - investigate   |
+|                 |                 |                 |   remote        |
+|                 |                 |                 |   syncing of    |
+|                 |                 |                 |   Puppet repos  |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Initiate        | 2               | No, does not    | Maybe...        |
 | IPMI/firmware/h |                 | support this    |                 |
@@ -1502,161 +1482,160 @@ that it is not worth the time
 |    server and   |                 |                 |                 |
 |    execute      |                 |                 |                 |
 |    there        |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Distributed     | **3 or 1**      | xCAT-based      | A Foreman-based |
 | Puppet          |                 | solution offers | solution may    |
 | architecture    |                 | no assistance   | make some of    |
 |                 |                 | here but it     | this easier:    |
-| -  We only      |                 | should all be   |                 |
-|    strictly     |                 | possible.       | -  If           |
-|    *need* this  |                 |                 |    Foreman-base |
-|    if it's      |                 | -  Local ENC or | d               |
-|    determined   |                 |    sync ENC     |    Puppet ENC   |
-|    to be        |                 |    between      |    works even   |
-|    necessary    |                 |    Puppet       |    when Foreman |
-|    from a       |                 |    Masters.     |    Master is    |
-|    security     |                 |                 |    unavailable, |
-|    perspective  |                 |                 |    then that is |
-|    or if nodes  |                 |                 |    a plus.      |
-|    have no      |                 |                 |                 |
-|    "public"     |                 |                 | -  Foreman      |
-|    interface    |                 |                 |    installer    |
-|    and cannot   |                 |                 |    might make   |
-|    NAT out.     |                 |                 |    setup of     |
-|                 |                 |                 |    Puppet CA vs |
-| -  Puppet repos |                 |                 |    Puppet       |
-|    need to be   |                 |                 |    Master       |
-|    pulled from  |                 |                 |    somewhat     |
-|    same Git or  |                 |                 |    easier (or   |
-|    synced from  |                 |                 |    at least     |
-|    authoritativ |                 |                 |    offer a      |
-| e               |                 |                 |    template).   |
-|    repo.        |                 |                 |                 |
-|                 |                 |                 | -  We could     |
-| -  Can we have  |                 |                 |    further      |
-|    a            |                 |                 |    investigate  |
-|    centralized  |                 |                 |    what (if     |
-|    Puppet CA or |                 |                 |    anything)    |
-|    do we need   |                 |                 |    Katello has  |
-|    it to be     |                 |                 |    to offer in  |
-|    local?       |                 |                 |    this area,   |
-|                 |                 |                 |    e.g., w/     |
-|                 |                 |                 |    Puppet       |
-|                 |                 |                 |    repository/m |
-|                 |                 |                 | odule           |
-|                 |                 |                 |    management.  |
+| - We only       |                 | should all be   |                 |
+|   strictly      |                 | possible.       | - If            |
+|   *need* this   |                 |                 |   Foreman-based |
+|   if it's       |                 | -  Local ENC or |                 |
+|   determined    |                 |    sync ENC     |   Puppet ENC    |
+|   to be         |                 |    between      |   works even    |
+|   necessary     |                 |    Puppet       |   when Foreman  |
+|   from a        |                 |    Masters.     |   Master is     |
+|   security      |                 |                 |   unavailable,  |
+|   perspective   |                 |                 |   then that is  |
+|   or if nodes   |                 |                 |   a plus.       |
+|   have no       |                 |                 |                 |
+|   "public"      |                 |                 | - Foreman       |
+|   interface     |                 |                 |   installer     |
+|   and cannot    |                 |                 |   might make    |
+|   NAT out.      |                 |                 |   setup of      |
+|                 |                 |                 |   Puppet CA vs  |
+| - Puppet repos  |                 |                 |   Puppet        |
+|   need to be    |                 |                 |   Master        |
+|   pulled from   |                 |                 |   somewhat      |
+|   same Git or   |                 |                 |   easier (or    |
+|   synced from   |                 |                 |   at least      |
+|   authoritative |                 |                 |   offer a       |
+|   repo.         |                 |                 |   template).    |
+|                 |                 |                 |                 |
+|                 |                 |                 | - We could      |
+| - Can we have a |                 |                 |   further       |
+|                 |                 |                 |   investigate   |
+|   centralized   |                 |                 |   what (if      |
+|   Puppet CA or  |                 |                 |   anything)     |
+|   do we need    |                 |                 |   Katello has   |
+|   it to be      |                 |                 |   to offer in   |
+|   local?        |                 |                 |   this area,    |
+|                 |                 |                 |   e.g., w/      |
+|                 |                 |                 |   Puppet        |
+|                 |                 |                 |   repository/   |
+|                 |                 |                 |   module        |
+|                 |                 |                 |   management.   |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Distributed     | 3               | Yes, but        | Yes, but        |
 | environments    |                 | investigate     | investigate     |
 | can operating   |                 | Puppet (esp.    | Puppet (esp.    |
 | during WAN cut  |                 | ENC and CA).    | ENC and CA).    |
 |                 |                 |                 |                 |
-| -  Previously   |                 | -  With our     | -  Does         |
-|    deployed     |                 |    current ENC  |    Foreman's    |
-|    machines can |                 |    it probably  |    Puppet ENC   |
-|    continue to  |                 |    makes sense  |    continue to  |
-|    operate.     |                 |    to have it   |    operate      |
-|                 |                 |    located on   |    during WAN   |
-|    -  This has  |                 |    each local   |    cut?         |
-|       little to |                 |    Puppet       |                 |
-|       do with   |                 |    Master (but  |    -  If not,   |
-|       which     |                 |    w/ syncing   |       verify    |
-|       deploymen |                 |    from a       |       that we   |
-| t               |                 |    central      |       can       |
-|       solution  |                 |    source) so   |       instead   |
-|       we pick.  |                 |    that the     |       use our   |
-|       The main  |                 |    local Puppet |       own ENC   |
-|       considera |                 |    Master can   |       rather    |
-| tion            |                 |    continue     |       than      |
-|       is, can   |                 |    functioning. |       Foreman's |
-|       machines  |                 |                 | .               |
-|       continue  |                 | -  What about   |                 |
-|       to work   |                 |    Puppet CA?   | -  What about   |
-|       even if   |                 |    If we have a |    Puppet CA?   |
-|       Puppet    |                 |    single       |    If we have a |
-|       cannot    |                 |    Puppet CA    |    single       |
-|       contact   |                 |    does a local |    Puppet CA    |
-|       its       |                 |    Puppet       |    does a local |
-|       master?   |                 |    Client-Puppe |    Puppet       |
-|       As such   |                 | t               |    Client-Puppe |
-|       it has    |                 |    Master       | t               |
-|       more to   |                 |    session work |    Master       |
-|       do with   |                 |    w/o being    |    session work |
-|       whether   |                 |    able to      |    w/o being    |
-|       or not we |                 |    contact the  |    able to      |
-|       need a    |                 |    remote       |    contact the  |
-|       distribut |                 |    Puppet CA?   |    remote       |
-| ed              |                 |                 |    Puppet CA?   |
-|       Puppet    |                 |                 |                 |
-|       architect |                 |                 |                 |
-| ure.            |                 |                 |                 |
+| - Previously    |                 | - With our      | -  Does         |
+|   deployed      |                 |   current ENC   |    Foreman's    |
+|   machines can  |                 |   it probably   |    Puppet ENC   |
+|   continue to   |                 |   makes sense   |    continue to  |
+|   operate.      |                 |   to have it    |    operate      |
+|                 |                 |   located on    |    during WAN   |
+|   - This has    |                 |   each local    |    cut?         |
+|     little to   |                 |   Puppet        |                 |
+|     do with     |                 |   Master (but   |    -  If not,   |
+|     which       |                 |   w/ syncing    |       verify    |
+|     deployment  |                 |   from a        |       that we   |
+|                 |                 |   central       |       can       |
+|     solution    |                 |   source) so    |       instead   |
+|     we pick.    |                 |   that the      |       use our   |
+|     The main    |                 |   local Puppet  |       own ENC   |
+|     considera-  |                 |   Master can    |       rather    |
+|     tion        |                 |   continue      |       than      |
+|     is, can     |                 |   functioning.  |       Foreman's |
+|     machines    |                 |                 |                 |
+|     continue    |                 | - What about    |                 |
+|     to work     |                 |   Puppet CA?    | - What about    |
+|     even if     |                 |   If we have a  |   Puppet CA?    |
+|     Puppet      |                 |   single        |   If we have a  |
+|     cannot      |                 |   Puppet CA     |   single        |
+|     contact     |                 |   does a local  |   Puppet CA     |
+|     its         |                 |   Puppet        |   does a local  |
+|     master?     |                 |   Client-Puppet |   Puppet        |
+|     As such     |                 |                 |   Client-Puppet |
+|     it has      |                 |   Master        |                 |
+|     more to     |                 |   session work  |   Master        |
+|     do with     |                 |   w/o being     |   session work  |
+|     whether     |                 |   able to       |   w/o being     |
+|     or not we   |                 |   contact the   |   able to       |
+|     need a      |                 |   remote        |   contact the   |
+|     distributed |                 |   Puppet CA?    |   remote        |
+|                 |                 |                 |   Puppet CA?    |
+|     Puppet      |                 |                 |                 |
+|     architecture|                 |                 |                 |
 |                 |                 |                 |                 |
-|    -  Other     |                 |                 |                 |
-|       considera |                 |                 |                 |
-| tions           |                 |                 |                 |
-|       such as,  |                 |                 |                 |
-|       do we     |                 |                 |                 |
-|       need      |                 |                 |                 |
-|       local     |                 |                 |                 |
-|       DNS, NTP, |                 |                 |                 |
-|       SSL CRL,  |                 |                 |                 |
-|       LDAP,     |                 |                 |                 |
-|       etc. are  |                 |                 |                 |
-|       directly  |                 |                 |                 |
-|       not about |                 |                 |                 |
-|       deploymen |                 |                 |                 |
-| t               |                 |                 |                 |
-|       strictly  |                 |                 |                 |
-|       speaking  |                 |                 |                 |
-|       and more  |                 |                 |                 |
-|       or less   |                 |                 |                 |
-|       independe |                 |                 |                 |
-| nt              |                 |                 |                 |
-|       of which  |                 |                 |                 |
-|       deploymen |                 |                 |                 |
-| t               |                 |                 |                 |
-|       system we |                 |                 |                 |
-|       choose.   |                 |                 |                 |
+|   - Other       |                 |                 |                 |
+|     considera-  |                 |                 |                 |
+|     tions       |                 |                 |                 |
+|     such as,    |                 |                 |                 |
+|     do we       |                 |                 |                 |
+|     need        |                 |                 |                 |
+|     local       |                 |                 |                 |
+|     DNS, NTP,   |                 |                 |                 |
+|     SSL CRL,    |                 |                 |                 |
+|     LDAP,       |                 |                 |                 |
+|     etc. are    |                 |                 |                 |
+|     directly    |                 |                 |                 |
+|     not about   |                 |                 |                 |
+|     deployment  |                 |                 |                 |
+|     strictly    |                 |                 |                 |
+|     speaking    |                 |                 |                 |
+|     and more    |                 |                 |                 |
+|     or less     |                 |                 |                 |
+|     independent |                 |                 |                 |
+|     of which    |                 |                 |                 |
+|     deployment  |                 |                 |                 |
+|     system we   |                 |                 |                 |
+|     choose.     |                 |                 |                 |
 |                 |                 |                 |                 |
-| -  Does not     |                 |                 |                 |
-|    mean that we |                 |                 |                 |
-|    can initiate |                 |                 |                 |
-|    new          |                 |                 |                 |
-|    deployments  |                 |                 |                 |
-|    (how could   |                 |                 |                 |
-|    we           |                 |                 |                 |
-|    conceivably) |                 |                 |                 |
-|    although     |                 |                 |                 |
-|    it'd be nice |                 |                 |                 |
-|    if one that  |                 |                 |                 |
-|    was in       |                 |                 |                 |
-|    progress     |                 |                 |                 |
-|    would        |                 |                 |                 |
-|    continue     |                 |                 |                 |
-|    (hence 3 or  |                 |                 |                 |
-|    2).          |                 |                 |                 |
+| - Does not      |                 |                 |                 |
+|   mean that we  |                 |                 |                 |
+|   can initiate  |                 |                 |                 |
+|   new           |                 |                 |                 |
+|   deployments   |                 |                 |                 |
+|   (how could    |                 |                 |                 |
+|   we            |                 |                 |                 |
+|   conceivably)  |                 |                 |                 |
+|   although      |                 |                 |                 |
+|   it'd be nice  |                 |                 |                 |
+|   if one that   |                 |                 |                 |
+|   was in        |                 |                 |                 |
+|   progress      |                 |                 |                 |
+|   would         |                 |                 |                 |
+|   continue      |                 |                 |                 |
+|   (hence 3 or   |                 |                 |                 |
+|   2).           |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | PXE over WAN    | 1               | No, xCAT does   | -  Investigate  |
 |                 |                 | not seem to     |    further?     |
-| -  Not super    |                 | support PXE     |                 |
-|    useful as it |                 | over WAN.       |                 |
-|    still        |                 |                 |                 |
-|    requires     |                 |                 |                 |
-|    local DHCP.  |                 |                 |                 |
-|    It would     |                 |                 |                 |
-|    just save us |                 |                 |                 |
-|    needing to   |                 |                 |                 |
-|    have local   |                 |                 |                 |
-|    installation |                 |                 |                 |
-|    repo/image.  |                 |                 |                 |
+| - Not super     |                 | support PXE     |                 |
+|   useful as it  |                 | over WAN.       |                 |
+|   still         |                 |                 |                 |
+|   requires      |                 |                 |                 |
+|   local DHCP.   |                 |                 |                 |
+|   It would      |                 |                 |                 |
+|   just save us  |                 |                 |                 |
+|   needing to    |                 |                 |                 |
+|   have local    |                 |                 |                 |
+|   installation  |                 |                 |                 |
+|   repo/image.   |                 |                 |                 |
 |                 |                 |                 |                 |
-| -  Does NOT     |                 |                 |                 |
-|    include      |                 |                 |                 |
-|    kickstart    |                 |                 |                 |
-|    communicatio |                 |                 |                 |
-| n               |                 |                 |                 |
-|    itself (next |                 |                 |                 |
-|    topic).      |                 |                 |                 |
+| - Does NOT      |                 |                 |                 |
+|   include       |                 |                 |                 |
+|   kickstart     |                 |                 |                 |
+|   communication |                 |                 |                 |
+|   itself (next  |                 |                 |                 |
+|   topic).       |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Local kickstart | 3               | Yes, each xCAT  | Yes, Foreman    |
 | server or       |                 | master would be | has a           |
@@ -1664,36 +1643,31 @@ that it is not worth the time
 | kickstart       |                 |                 | Smart Proxy     |
 | communication   |                 |                 | feature that    |
 |                 |                 |                 | supports        |
-| -  Kickstart    |                 |                 | distributed     |
-|    files often  |                 |                 | sources         |
-|    contain      |                 |                 | kickstart.      |
-|    sensitive    |                 |                 |                 |
-|    information  |                 |                 |                 |
-|    so kickstart |                 |                 |                 |
-|    communicatio |                 |                 |                 |
-| n               |                 |                 |                 |
-|    should be    |                 |                 |                 |
-|    encrypted or |                 |                 |                 |
-|    remain       |                 |                 |                 |
-|    local.       |                 |                 |                 |
+| - Kickstart     |                 |                 | distributed     |
+|   files often   |                 |                 | sources         |
+|   contain       |                 |                 | kickstart.      |
+|   sensitive     |                 |                 |                 |
+|   information   |                 |                 |                 |
+|   so kickstart  |                 |                 |                 |
+|   communication |                 |                 |                 |
+|   should be     |                 |                 |                 |
+|   encrypted or  |                 |                 |                 |
+|   remain        |                 |                 |                 |
+|   local.        |                 |                 |                 |
 |                 |                 |                 |                 |
-| -  Encryption   |                 |                 |                 |
-|    of kickstart |                 |                 |                 |
-|    communicatio |                 |                 |                 |
-| n               |                 |                 |                 |
-|    may be       |                 |                 |                 |
-|    possible (w/ |                 |                 |                 |
-|    `RHEL <https |                 |                 |                 |
-| ://access.redha |                 |                 |                 |
-| t.com/solutions |                 |                 |                 |
-| /1016>`__,      |                 |                 |                 |
-|    maybe        |                 |                 |                 |
-|    CentOS) but  |                 |                 |                 |
-|    it would be  |                 |                 |                 |
-|    nonstandard  |                 |                 |                 |
-|    w/ respect   |                 |                 |                 |
-|    to both xCAT |                 |                 |                 |
-|    and Foreman. |                 |                 |                 |
+| - Encryption    |                 |                 |                 |
+|   of kickstart  |                 |                 |                 |
+|   communication |                 |                 |                 |
+|   may be        |                 |                 |                 |
+|   possible (w/  |                 |                 |                 |
+|   RHEL, maybe   |                 |                 |                 |
+|   CentOS) but   |                 |                 |                 |
+|   it would be   |                 |                 |                 |
+|   nonstandard   |                 |                 |                 |
+|   w/ respect    |                 |                 |                 |
+|   to both xCAT  |                 |                 |                 |
+|   and Foreman.  |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Other security  | 3               | -  Security of  | -  Security of  |
 | considerations  |                 |    any custom   |    remote IPMI  |
@@ -1720,6 +1694,7 @@ that it is not worth the time
 |                 |                 |    distributed  |                 |
 |                 |                 |    setup we     |                 |
 |                 |                 |    create.      |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Scalability     | 3               | Yes, an         | Yes, a          |
 |                 |                 | xCAT-based      | Foreman-based   |
@@ -1744,16 +1719,15 @@ that it is not worth the time
 |                 |                 |    from/in      |    availability |
 |                 |                 |    addition to. |    at or before |
 |                 |                 |                 |    then is      |
-|                 |                 |    -  xCAT is   |    advised.     |
-|                 |                 |       further   |    (`HA case    |
-|                 |                 |       scalable  |    study <https |
-|                 |                 |       within a  | ://theforeman.o |
-|                 |                 |       datacente | rg/2015/12/jour |
-|                 |                 | r               | ney_to_high_ava |
-|                 |                 |       via the   | ilability.html> |
-|                 |                 |       use of    | `__)            |
-|                 |                 |       service   |                 |
-|                 |                 |       nodes.    | -  How does     |
+|                 |                 |    - xCAT is    |    advised.     |
+|                 |                 |      further    |    ("HA case    |
+|                 |                 |      scalable   |    study")      |
+|                 |                 |      within a   |                 |
+|                 |                 |      datacenter |                 |
+|                 |                 |      via the    |                 |
+|                 |                 |      use of     |                 |
+|                 |                 |      service    |                 |
+|                 |                 |      nodes.     | -  How does     |
 |                 |                 |                 |    Foreman's    |
 |                 |                 | -  We've heard  |    BMC Smart    |
 |                 |                 |    that the     |    Proxy        |
@@ -1770,6 +1744,7 @@ that it is not worth the time
 |                 |                 |    care of      |    terms of     |
 |                 |                 |    that,        |    deploying    |
 |                 |                 |    however.     |    machines?    |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Reliability     |                 | Yes, seems      | Probably...     |
 |                 |                 | solid overall   |                 |
@@ -1777,62 +1752,52 @@ that it is not worth the time
 |                 |                 | previous use at |    Security.    |
 |                 |                 | NCSA, including |                 |
 |                 |                 | LSST.           | -  Ask ITS.     |
-+-----------------+-----------------+-----------------+-----------------+
-| Ability to      | 3               | -  http://xcat- | -  https://thef |
-| backup and      |                 | docs.readthedoc | oreman.org/manu |
-| restore         |                 | s.io/en/stable/ | als/1.16/index. |
-|                 |                 | guides/install- | html#5.5Backup, |
-|                 |                 | guides/maintena | RecoveryandMigr |
-|                 |                 | nce/backup_rest | ation           |
-|                 |                 | ore_xcat.html   |                 |
-|                 |                 |                 | -  Test.        |
-|                 |                 |    -  Somewhat  |                 |
-|                 |                 |       unclear   |                 |
-|                 |                 |       if this   |                 |
-|                 |                 |       encompass |                 |
-|                 |                 | es              |                 |
-|                 |                 |       everythin |                 |
-|                 |                 | g               |                 |
-|                 |                 |       needed    |                 |
-|                 |                 |       for DHCP, |                 |
-|                 |                 |       DNS, etc. |                 |
-|                 |                 |       (maybe    |                 |
-|                 |                 |       just run  |                 |
-|                 |                 |       makedhcp, |                 |
-|                 |                 |       makedns,  |                 |
-|                 |                 |       makehosts |                 |
-|                 |                 | ,               |                 |
-|                 |                 |       etc.      |                 |
-|                 |                 |       after     |                 |
-|                 |                 |       recovery) |                 |
-|                 |                 | .               |                 |
-|                 |                 |       Definitel |                 |
-|                 |                 | y               |                 |
-|                 |                 |       does not  |                 |
-|                 |                 |       include   |                 |
-|                 |                 |       /install  |                 |
-|                 |                 |       directory |                 |
-|                 |                 | .               |                 |
 |                 |                 |                 |                 |
-|                 |                 |    -  See also  |                 |
-|                 |                 |       `informat |                 |
-|                 |                 | ion             |                 |
-|                 |                 |       on xCAT   |                 |
-|                 |                 |       high      |                 |
-|                 |                 |       availabil |                 |
-|                 |                 | ity <http://xca |                 |
-|                 |                 | t-docs.readthed |                 |
-|                 |                 | ocs.io/en/stabl |                 |
-|                 |                 | e/advanced/hamn |                 |
-|                 |                 | /index.html>`__ |                 |
-|                 |                 |       for other |                 |
-|                 |                 |       backup    |                 |
-|                 |                 |       and       |                 |
-|                 |                 |       storage   |                 |
-|                 |                 |       considera |                 |
-|                 |                 | tions.          |                 |
++-----------------+-----------------+-----------------+-----------------+
+| Ability to      | 3               | - See XCAT      | - See Foreman   |
+| backup and      |                 |   Installation  |   Manual Backup,|
+| restore         |                 |   Guide Backup  |   REcovery, and |
+|                 |                 |   and Restore   |   Migration     |
+|                 |                 |   section       |   section       |
+|                 |                 |                 |                 | 
+|                 |                 |    - Somewhat   | -  Test.        |
+|                 |                 |      unclear    |                 |
+|                 |                 |      if this    |                 |
+|                 |                 |      encompass  |                 |
+|                 |                 |      everything |                 |
+|                 |                 |      needed     |                 |
+|                 |                 |      for DHCP,  |                 |
+|                 |                 |      DNS, etc.  |                 |
+|                 |                 |      (maybe     |                 |
+|                 |                 |      just run   |                 |
+|                 |                 |      makedhcp,  |                 |
+|                 |                 |      makedns,   |                 |
+|                 |                 |      makehosts, |                 |
+|                 |                 |      etc.       |                 |
+|                 |                 |      after      |                 |
+|                 |                 |      recovery). |                 |
+|                 |                 |      Definitely |                 |
+|                 |                 |      does not   |                 |
+|                 |                 |      include    |                 |
+|                 |                 |      /install   |                 |
+|                 |                 |      directory. |                 |
+|                 |                 |                 |                 |
+|                 |                 |    - See also   |                 |
+|                 |                 |      "informa-  |                 |
+|                 |                 |      ion        |                 |
+|                 |                 |      on xCAT    |                 |
+|                 |                 |      high       |                 |
+|                 |                 |      availabil- |                 |
+|                 |                 |      ity"       |                 |
+|                 |                 |      for other  |                 |
+|                 |                 |      backup     |                 |
+|                 |                 |      and        |                 |
+|                 |                 |      storage    |                 |
+|                 |                 |      considera- |                 |
+|                 |                 |      tions.     |                 |
 |                 |                 |                 |                 |
 |                 |                 | -  Test.        |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | High            | **3 or 1**      | Possible        | Possible        |
 | availability -  |                 | roadmap:        | roadmap: `HA    |
@@ -1841,13 +1806,13 @@ that it is not worth the time
 |                 |                 | availability <h | theforeman.org/ |
 | -  Production   |                 | ttp://xcat-docs | 2015/12/journey |
 |    nodes should |                 | .readthedocs.io | _to_high_availa |
-|    not depend   |                 | /en/stable/adva | bility.html>`__ |
+|    not depend   |                 | /en/stable/adva | bility.html>`   |
 |    on           |                 | nced/hamn/index |                 |
-|    deployment   |                 | .html>`__       | -  A bit        |
+|    deployment   |                 | .html>`         | -  A bit        |
 |    and          |                 |                 |    complicated  |
 |    management   |                 |                 |    though       |
 |    infrastructu |                 |                 |    (involves    |
-| re              |                 |                 |    memcache     |
+|                 |                 |                 |    memcache     |
 |    (see         |                 |                 |    servers)?    |
 |    discussion   |                 |                 |                 |
 |    about        |                 |                 |                 |
@@ -1863,6 +1828,7 @@ that it is not worth the time
 |    management   |                 |                 |                 |
 |    nodes then   |                 |                 |                 |
 |    it matters.  |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Interface /     |                 |                 |                 |
 | workflow /      |                 |                 |                 |
@@ -1877,8 +1843,8 @@ that it is not worth the time
 | logging         |                 | including       | centralized     |
 |                 |                 | console logs.   | reporting       |
 | -  Note our     |                 |                 | console for     |
-|    monitoring/l |                 |                 | Puppet.         |
-| ogging          |                 |                 |                 |
+|    monitoring/  |                 |                 | Puppet.         |
+|    logging      |                 |                 |                 |
 |    stack should |                 |                 |                 |
 |    take care of |                 |                 |                 |
 |    this to a    |                 |                 |                 |
@@ -1888,10 +1854,11 @@ that it is not worth the time
 |    more         |                 |                 |                 |
 |    integrated   |                 |                 |                 |
 |    with the     |                 |                 |                 |
-|    management/d |                 |                 |                 |
-| eployment       |                 |                 |                 |
+|    management/  |                 |                 |                 |
+|    deployment   |                 |                 |                 |
 |    system could |                 |                 |                 |
 |    be nice.     |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Support for     | **3 or 2**      | No              | No              |
 | change control: |                 | Git-integration | Git-integration |
@@ -1900,9 +1867,9 @@ that it is not worth the time
 | rollback, and   |                 | customize.      | functionality   |
 | auditing        |                 |                 | may be harder   |
 | procedures      |                 | -  Use tabdump  | to implement    |
-|                 |                 |    to           | and enforce.    |
-| -  Not sure to  |                 |    import/expor |                 |
-|    what degree  |                 | t               | -  Export       |
+|                 |                 |    to import/   | and enforce.    |
+| -  Not sure to  |                 |    export       |                 |
+|    what degree  |                 |                 | -  Export       |
 |    the project  |                 |    tables to    |    configs from |
 |    will require |                 |    text and     |    DB to text   |
 |    this.        |                 |    integrate w/ |    periodically |
@@ -1932,6 +1899,7 @@ that it is not worth the time
 |                 |                 |                 |    auditing via |
 |                 |                 |                 |    various      |
 |                 |                 |                 |    interfaces?  |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Overall ease of | 2               | -  CLI is very  | -  Evaluate     |
 | use /           |                 |    responsive.  |    CLI, APIs,   |
@@ -1945,6 +1913,7 @@ that it is not worth the time
 |                 |                 |                 |    can be made  |
 |                 |                 |                 |    more         |
 |                 |                 |                 |    responsive.  |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Specifically:   | 2               | -  We have this | -  Seems that   |
 | ease of         |                 |    worked out   |    it would     |
@@ -1953,8 +1922,8 @@ that it is not worth the time
 | node            |                 |    nodes at     |    manipulation |
 |                 |                 |    NPCF.        |    of kickstart |
 | (incl. Puppet   |                 |                 |    files,       |
-| ENC, NICs, disk |                 | -  xCAT-generat |    especially   |
-| partitioning)   |                 | ed              |    up front. It |
+| ENC, NICs, disk |                 | -  xCAT-gen'ed  |    especially   |
+| partitioning)   |                 |                 |    up front. It |
 |                 |                 |    kickstart    |    doesn't      |
 |                 |                 |    files suit   |    appear that  |
 |                 |                 |    as fairly    |    Foreman      |
@@ -1964,6 +1933,7 @@ that it is not worth the time
 |                 |                 |    provisioning |                 |
 |                 |                 |    is fairly    |                 |
 |                 |                 |    smart.       |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Specifically:   | 1               | -  Evaluate     | -  Evaluate     |
 | ease of         |                 |    node         |    node         |
@@ -1980,6 +1950,7 @@ that it is not worth the time
 |    install new  |                 |                 |                 |
 |    hardware all |                 |                 |                 |
 |    that often.  |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Command-line    | 3               | Extensive and   | -  Investigate  |
 | interface (and  |                 | fairly well     |    and evaluate |
@@ -1993,26 +1964,26 @@ that it is not worth the time
 |    depends on a |                 |                 |                 |
 |    CLI or some  |                 |                 |                 |
 |    kind of API. |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | GUI admin       | 1               | No...           | Yes.            |
 | console         |                 |                 |                 |
 |                 |                 | -  Well, maybe  | -  Has LDAP     |
 |                 |                 |    Confluent.   |    integration. |
 |                 |                 |                 |                 |
-|                 |                 |                 |    -  Can we    |
-|                 |                 |                 |       secure    |
-|                 |                 |                 |       with      |
-|                 |                 |                 |       two-facto |
-|                 |                 |                 | r               |
-|                 |                 |                 |       or just   |
-|                 |                 |                 |       require   |
-|                 |                 |                 |       SSH with  |
-|                 |                 |                 |       X11       |
-|                 |                 |                 |       forwardin |
-|                 |                 |                 | g               |
-|                 |                 |                 |       from a    |
-|                 |                 |                 |       bastion   |
-|                 |                 |                 |       node?     |
+|                 |                 |                 |    - Can we     |
+|                 |                 |                 |      secure     |
+|                 |                 |                 |      with       |
+|                 |                 |                 |      two-factor |
+|                 |                 |                 |      or just    |
+|                 |                 |                 |      require    |
+|                 |                 |                 |      SSH with   |
+|                 |                 |                 |      X11        |
+|                 |                 |                 |      forwarding |
+|                 |                 |                 |      from a     |
+|                 |                 |                 |      bastion    |
+|                 |                 |                 |      node?      |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Granular        | **3 or 1**      | Not built in.   | Yes, but need   |
 | permissions     |                 |                 | to evaluate     |
@@ -2040,10 +2011,10 @@ that it is not worth the time
 |   (e.g.,        |                 |                 |                 |
 |   Puppet        |                 |                 |                 |
 |   role/site/    |                 |                 |                 |
-| datacenter/     |                 |                 |                 |
-| custer)         |                 |                 |                 |
-|    of some/all  |                 |                 |                 |
-|    nodes.       |                 |                 |                 |
+|   datacenter/   |                 |                 |                 |
+|   custer)       |                 |                 |                 |
+|   of some/all   |                 |                 |                 |
+|   nodes.        |                 |                 |                 |
 |                 |                 |                 |                 |
 | - Our           |                 |                 |                 |
 |   monitoring    |                 |                 |                 |
@@ -2055,6 +2026,7 @@ that it is not worth the time
 |   high-level    |                 |                 |                 |
 |   configuration |                 |                 |                 |
 |   as well.      |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Specifically:   | **3 or 1**      | Not built in.   | Seems to be     |
 | Allow           |                 |                 | built in.       |
@@ -2090,6 +2062,7 @@ that it is not worth the time
 |    have         |                 |                 |                 |
 |    more/full    |                 |                 |                 |
 |    access?      |                 |                 |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Notifications   | 1               | No, does not    | Yes, seem to be |
 |                 |                 | seem to be      | built in.       |
@@ -2109,6 +2082,7 @@ that it is not worth the time
 |                 |                 |                 |    the "owner"  |
 |                 |                 |                 |    of the       |
 |                 |                 |                 |    machine.     |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Documentation   | 2               | xCAT            | Foreman         |
 | and support     |                 | documentation   | documentation   |
@@ -2211,7 +2185,7 @@ certificates) alongside xCAT, etc.
    /etc/xinitd.d/tftp seem to conflict. We could ask online to see if it
    is possible to install a Foreman Master without TFTP. Also see
    Foreman Manual for \ `customization of
-   TFTP <https://www.theforeman.org/manuals/1.16/index.html#4.3.9TFTP>`__.
+   TFTP <https://www.theforeman.org/manuals/1.16/index.html#4.3.9TFTP>`.
 
 -  If pursuing (2) it might make sense to have general
    admin/xCAT/IPMI/bastion functions on one node and Foreman/Puppet (CA,
@@ -2257,3 +2231,4 @@ Addendum 2: Other considerations for making a decision
 -  (2), (3), and (4) could be pursued later on (with more awareness of
    both project requirements and of Foreman) and also pursued
    incrementally, e.g., (1)->(2)->(3)->(4)->....
+
