@@ -61,10 +61,6 @@
 ..    :encoding: latex+latin
 ..    :style: lsst_aa
 
-=================================================================
-Investigations for Consolidating System Management and Deployment
-=================================================================
-
 Hosting, Managing, and Consuming Yum Repos: Pakrat, Katello, and More
 =====================================================================
 
